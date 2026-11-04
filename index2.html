@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <m<!DOCTYPE html>
+        <html lang="es">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Guía Interactiva: Convenciones de Estilo y Nomenclatura</title>
+            <style>
+                :root {
+                    --bg-color: #f8f9fa;
+                    --card-bg: #ffffff;
+                    --text-color: #212529;
+                    --primary: #0d6efd;
+                    --success: #198754;
+                    --danger: #dc3545;
+                    --border-color: #dee2e6;
+                }
+
+                body {
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                    background-color: var(--bg-color);
+                    color: var(--text-color);
+                    line-height: 1.6;
+                    margin: 0;
+                    padding: 20px;
+                }
+
+                .container {
+                    max-width: 1000px;
+                    margin: 0 auto;
+                }
+
+                header {
+                    text-align: center;
+                    margin-bottom: 40px;
+                }
+
+                h1 {
+                    color: var(--primary);
+                    margin-bottom: 5px;
+                }
+
+                h2 {
+                    border-bottom: 2px solid var(--border-color);
+                    padding-bottom: 8px;
+                    margin-top: 30px;
+                }
+
+                .grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 20px;
+                    margin-bottom: 30px;
+                }
+
+                @media (max-width: 768px) {
+                    .grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                .card {
+                    background: var(--card-bg);
+                    border: 1px solid var(--border-color);
+                    border-radius: 8px;
+                    padding: 20px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+                }
+
+                .card.mal {
+                    border-top: 4px solid var(--danger);
+                }
+
+                .card.bien {
+                    border-top: 4px solid var(--success);
+                }
+
+                .badge {
+                    display: inline-block;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                    color: #fff;
+                    margin-bottom: 10px;
+                }
+
+                .badge.mal {
+                    background-color: var(--danger);
+                }
+
+                .badge.bien {
+                    background-color: var(--success);
+                }
+
+                pre {
+                    background: #272822;
+                    color: #f8f8f2;
+                    padding: 15px;
+                    border-radius: 6px;
+                    overflow-x: auto;
+                    font-family: "Courier New", Courier, monospace;
+                    font-size: 0.9rem;
+                }
+
+                /* Sección Interactiva */
+                .interactive-panel {
+                    background: #e9ecef;
+                    border: 2px dashed var(--primary);
+                    border-radius: 8px;
+                    padding: 25px;
+                    margin-top: 40px;
+                }
+
+                .form-group {
+                    margin-bottom: 15px;
+                }
+
+                label {
+                    display: block;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+
+                input[type="text"] {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid var(--border-color);
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    font-size: 1rem;
+                }
+
+                button {
+                    background-color: var(--primary);
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    font-size: 1rem;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-weight: bold;
+                }
+
+                button:hover {
+                    background-color: #0b5ed7;
+                }
+
+                #feedback {
+                    margin-top: 15px;
+                    padding: 15px;
+                    border-radius: 4px;
+                    font-weight: bold;
+                    display: none;
+                }
+            </style>
+        </head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Plataforma de Aprendizaje de Estilo</h1>
+            <p>Estudio de buenas prácticas en HTML y JavaScript moderno.</p>
+        </header>
+
+        <!-- Tema 1 -->
+        <h2>1. Nombres Significativos e Interacción con el DOM</h2>
+        <div class="grid">
+            <div class="card mal">
+                <span class="badge mal">Incorrecto</span>
+                <p>Abreviaturas crípticas que obligan a adivinar el propósito de las variables.</p>
+                <pre><code>let n = "Pedro";
+function calc(x) {
+  return x * 1.16;
+}</code></pre>
+            </div>
+            <div class="card bien">
+                <span class="badge bien">Correcto (Clean Code)</span>
+                <p>Nombres descriptivos en formato <code>camelCase</code> que se autoexplican.</p>
+                <pre><code>let nombreUsuario = "Pedro";
+function calcularPrecioConIva(precioSubtotal) {
+  return precioSubtotal * 1.16;
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- Tema 2 -->
+        <h2>2. Indentación Estructurada (HTML + JS)</h2>
+        <div class="grid">
+            <div class="card mal">
+                <span class="badge mal">Incorrecto</span>
+                <p>Código plano, sin jerarquía visual. Hace imposible detectar errores de cierre.</p>
+                <pre><code>&lt;div&gt;
+&lt;button id="btn"&gt;Enviar&lt;/button&gt;
+&lt;script&gt;
+function alertar(){
+alert("Listo");
+}
+&lt;/script&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="card bien">
+                <span class="badge bien">Correcto (2 o 4 espacios)</span>
+                <p>Estructura anidada limpia. Permite entender la relación entre HTML y bloques de Script.</p>
+                <pre><code>&lt;div&gt;
+  &lt;button id="btnEnviar"&gt;Enviar&lt;/button&gt;
+ 
+  &lt;script&gt;
+    function mostrarAlertaExito() {
+      alert("Listo");
+    }
+  &lt;/script&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Tema 3 -->
+        <h2>3. Longitud de Líneas y Saltos de Bloque</h2>
+        <div class="grid">
+            <div class="card mal">
+                <span class="badge mal">Incorrecto</span>
+                <p>Línea horizontal kilométrica. Fuerza al desarrollador a hacer scroll lateral innecesario.</p>
+                <pre><code>&lt;input type="email" id="txt_eml_usr" class="input-primary large-size dark-theme text-left border-blue rounded-corners shadow" placeholder="Introduce tu correo electrónico corporativo aquí" required="true"&gt;</code></pre>
+            </div>
+            <div class="card bien">
+                <span class="badge bien">Correcto (Atributos Multi-línea)</span>
+                <p>Atributos ordenados verticalmente cuando exceden los 80 caracteres. Lectura natural de arriba a
+                    abajo.</p>
+                <pre><code>&lt;input
+  type="email"
+  id="inputCorreoUsuario"
+  class="input-primary large shadow"
+  placeholder="Introduce tu correo aquí"
+  required
+&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- SECCIÓN INTERACTIVA -->
+        <div class="interactive-panel">
+            <h3>🛠️ Laboratorio Interactivo de Nomenclatura</h3>
+            <p>Imagina que estás programando una función en JavaScript que se encarga de <strong>validar si la
+                    contraseña de un usuario es segura</strong>. ¿Cómo nombrarías esa función siguiendo las reglas de
+                <code>camelCase</code> y nombres significativos?
+            </p>
+
+            <div class="form-group">
+                <label for="inputNomenclatura">Escribe el nombre de tu función aquí:</label>
+                <input type="text" id="inputNomenclatura"
+                    placeholder="Ejemplo: f(), validar_pass(), esContrasenaSegura...">
+            </div>
+            <button onclick="evaluarNomenclatura()">Verificar Estilo</button>
+
+            <div id="feedback"></div>
+        </div>
+    </div>
+
+    <script>
+        function evaluarNomenclatura() {
+            const entrada = document.getElementById('inputNomenclatura').value.trim();
+            const feedbackDiv = document.getElementById('feedback');
+
+            // Mostrar contenedor
+            feedbackDiv.style.display = "block";
+
+            if (entrada === "") {
+                feedbackDiv.style.backgroundColor = "#fff3cd";
+                feedbackDiv.style.color = "#664d03";
+                feedbackDiv.style.border = "1px solid #ffe69c";
+                feedbackDiv.innerHTML = "⚠️ Por favor, escribe un nombre antes de verificar.";
+                return;
+            }
+
+            // Reglas de evaluación simples
+            const tieneMayusculaInicial = /^[A-Z]/.test(entrada);
+            const usaSnakeCase = /_/.test(entrada);
+            const esDemasiadoCorta = entrada.length <= 3;
+            const esCorrecta = /^[a-z][a-zA-Z0-9]+$/.test(entrada) && entrada.length > 5;
+
+            if (esCorrecta) {
+                feedbackDiv.style.backgroundColor = "#d1e7dd";
+                feedbackDiv.style.color = "#0f5132";
+                feedbackDiv.style.border = "1px solid #badbcc";
+                feedbackDiv.innerHTML = `✅ ¡Excelente! <strong>"${entrada}"</strong> cumple perfectamente con las normas: usa <code>camelCase</code>, empieza con minúscula y es un nombre descriptivo de longitud adecuada para JavaScript.`;
+            } else if (usaSnakeCase) {
+                feedbackDiv.style.backgroundColor = "#f8d7da";
+                feedbackDiv.style.color = "#842029";
+                feedbackDiv.style.border = "1px solid #f5c2c7";
+                feedbackDiv.innerHTML = `❌ El nombre contiene guiones bajos (<code>_</code>). Esto es <em>snake_case</em>, ideal para Python, pero en JavaScript el estándar comunitario dicta usar <strong><code>camelCase</code></strong> (ej. <code>validarContrasena</code>).`;
+            } else if (tieneMayusculaInicial) {
+                feedbackDiv.style.backgroundColor = "#f8d7da";
+                feedbackDiv.style.color = "#842029";
+                feedbackDiv.style.border = "1px solid #f5c2c7";
+                feedbackDiv.innerHTML = `❌ Empezaste con mayúscula (<em>PascalCase</em>). En JavaScript, guardar la primera letra mayúscula está reservado estrictamente para <strong>Clases</strong>. Las funciones normales deben empezar con minúscula.`;
+            } else if (esDemasiadoCorta) {
+                feedbackDiv.style.backgroundColor = "#f8d7da";
+                feedbackDiv.style.color = "#842029";
+                feedbackDiv.style.border = "1px solid #f5c2c7";
+                feedbackDiv.innerHTML = `❌ El nombre es demasiado corto o ambiguo. Nombres como "${entrada}" obligan a otros programadores a adivinar qué hace el código. Intenta usar algo más explícito como <code>esContrasenaSegura</code> o <code>validarClave</code>.`;
+            } else {
+                feedbackDiv.style.backgroundColor = "#fff3cd";
+                feedbackDiv.style.color = "#664d03";
+                feedbackDiv.style.border = "1px solid #ffe69c";
+                feedbackDiv.innerHTML = `⚠️ Nombre detectado pero no sigue el patrón estándar de JavaScript. Recuerda usar la estructura: <code>verboAccionEspecifica</code> comenzando en minúscula.`;
+            }
+        }
+    </script>
+</body>
+
+</html>eta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Interactiva: Convenciones de Estilo y Nomenclatura</title>
+<style>
+    :root {
+        --bg-color: #f8f9fa;
+        --card-bg: #ffffff;
+        --text-color: #212529;
+        --primary: #0d6efd;
+        --success: #198754;
+        --danger: #dc3545;
+        --border-color: #dee2e6;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    h1 {
+        color: var(--primary);
+        margin-bottom: 5px;
+    }
+
+    h2 {
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 8px;
+        margin-top: 30px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .card.mal {
+        border-top: 4px solid var(--danger);
+    }
+
+    .card.bien {
+        border-top: 4px solid var(--success);
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .badge.mal {
+        background-color: var(--danger);
+    }
+
+    .badge.bien {
+        background-color: var(--success);
+    }
+
+    pre {
+        background: #272822;
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9rem;
+    }
+
+    /* Sección Interactiva */
+    .interactive-panel {
+        background: #e9ecef;
+        border: 2px dashed var(--primary);
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 40px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+
+    button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background-color: #0b5ed7;
+    }
+
+    #feedback {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 4px;
+        font-weight: bold;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Plataforma de Aprendizaje de Estilo</h1>
+            <p>Estudio de buenas prácticas en HTML y JavaScript moderno.</p>
+        </header>
+
+        <!-- Tema 1 -->
+        <h2>1. Nombres Significativos e Interacción con el DOM</h2>
+        <div class="grid">
+            <div class="card mal">
+                <span class="badge mal">Incorrecto</span>
+                <p>Abreviaturas crípticas que obligan a adivinar el propósito de las variables.</p>
+                <pre><code>let n = "Pedro";
+function calc(x) {
+  return x * 1.16;
+}</code></pre>
+            </div>
+            <div class="card bien">
+                <span class="badge bien">Correcto (Clean Code)</span>
+                <p>Nombres descriptivos en formato <code>camelCase</code> que se autoexplican.</p>
+                <pre><code>let nombreUsuario = "Pedro";
+function calcularPrecioConIva(precioSubtotal) {
+  return precioSubtotal * 1.16;
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- Tema 2 -->
+        <h2>2. Indentación Estructurada (HTML + JS)</h2>
+        <div class="grid">
+            <div class="card mal">
+                <span class="badge mal">Incorrecto</span>
+                <p>Código plano, sin jerarquía visual. Hace imposible detectar errores de cierre.</p>
+                <pre><code>&lt;div&gt;
+&lt;button id="btn"&gt;Enviar&lt;/button&gt;
+&lt;script&gt;
+function alertar(){
+alert("Listo");
+}
+&lt;/script&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="card bien">
+                <span class="badge bien">Correcto (2 o 4 espacios)</span>
+                <p>Estructura anidada limpia. Permite entender la relación entre HTML y bloques de Script.</p>
+                <pre><code>&lt;div&gt;
+  &lt;button id="btnEnviar"&gt;Enviar&lt;/button&gt;
+ 
+  &lt;script&gt;
+    function mostrarAlertaExito() {
+      alert("Listo");
+    }
+  &lt;/script&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- Tema 3 -->
+        <h2>3. Longitud de Líneas y Saltos de Bloque</h2>
+        <div class="grid">
+            <div class="card mal">
+                <span class="badge mal">Incorrecto</span>
+                <p>Línea horizontal kilométrica. Fuerza al desarrollador a hacer scroll lateral innecesario.</p>
+                <pre><code>&lt;input type="email" id="txt_eml_usr" class="input-primary large-size dark-theme text-left border-blue rounded-corners shadow" placeholder="Introduce tu correo electrónico corporativo aquí" required="true"&gt;</code></pre>
+            </div>
+            <div class="card bien">
+                <span class="badge bien">Correcto (Atributos Multi-línea)</span>
+                <p>Atributos ordenados verticalmente cuando exceden los 80 caracteres. Lectura natural de arriba a
+                    abajo.</p>
+                <pre><code>&lt;input
+  type="email"
+  id="inputCorreoUsuario"
+  class="input-primary large shadow"
+  placeholder="Introduce tu correo aquí"
+  required
+&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- SECCIÓN INTERACTIVA -->
+        <div class="interactive-panel">
+            <h3>🛠️ Laboratorio Interactivo de Nomenclatura</h3>
+            <p>Imagina que estás programando una función en JavaScript que se encarga de <strong>validar si la
+                    contraseña de un usuario es segura</strong>. ¿Cómo nombrarías esa función siguiendo las reglas de
+                <code>camelCase</code> y nombres significativos?
+            </p>
+
+            <div class="form-group">
+                <label for="inputNomenclatura">Escribe el nombre de tu función aquí:</label>
+                <input type="text" id="inputNomenclatura"
+                    placeholder="Ejemplo: f(), validar_pass(), esContrasenaSegura...">
+            </div>
+            <button onclick="evaluarNomenclatura()">Verificar Estilo</button>
+
+            <div id="feedback"></div>
+        </div>
+    </div>
+
+    <script>
+        function evaluarNomenclatura() {
+            const entrada = document.getElementById('inputNomenclatura').value.trim();
+            const feedbackDiv = document.getElementById('feedback');
+
+            // Mostrar contenedor
+            feedbackDiv.style.display = "block";
+
+            if (entrada === "") {
+                feedbackDiv.style.backgroundColor = "#fff3cd";
+                feedbackDiv.style.color = "#664d03";
+                feedbackDiv.style.border = "1px solid #ffe69c";
+                feedbackDiv.innerHTML = "⚠️ Por favor, escribe un nombre antes de verificar.";
+                return;
+            }
+
+            // Reglas de evaluación simples
+            const tieneMayusculaInicial = /^[A-Z]/.test(entrada);
+            const usaSnakeCase = /_/.test(entrada);
+            const esDemasiadoCorta = entrada.length <= 3;
+            const esCorrecta = /^[a-z][a-zA-Z0-9]+$/.test(entrada) && entrada.length > 5;
+
+            if (esCorrecta) {
+                feedbackDiv.style.backgroundColor = "#d1e7dd";
+                feedbackDiv.style.color = "#0f5132";
+                feedbackDiv.style.border = "1px solid #badbcc";
+                feedbackDiv.innerHTML = `✅ ¡Excelente! <strong>"${entrada}"</strong> cumple perfectamente con las normas: usa <code>camelCase</code>, empieza con minúscula y es un nombre descriptivo de longitud adecuada para JavaScript.`;
+            } else if (usaSnakeCase) {
+                feedbackDiv.style.backgroundColor = "#f8d7da";
+                feedbackDiv.style.color = "#842029";
+                feedbackDiv.style.border = "1px solid #f5c2c7";
+                feedbackDiv.innerHTML = `❌ El nombre contiene guiones bajos (<code>_</code>). Esto es <em>snake_case</em>, ideal para Python, pero en JavaScript el estándar comunitario dicta usar <strong><code>camelCase</code></strong> (ej. <code>validarContrasena</code>).`;
+            } else if (tieneMayusculaInicial) {
+                feedbackDiv.style.backgroundColor = "#f8d7da";
+                feedbackDiv.style.color = "#842029";
+                feedbackDiv.style.border = "1px solid #f5c2c7";
+                feedbackDiv.innerHTML = `❌ Empezaste con mayúscula (<em>PascalCase</em>). En JavaScript, guardar la primera letra mayúscula está reservado estrictamente para <strong>Clases</strong>. Las funciones normales deben empezar con minúscula.`;
+            } else if (esDemasiadoCorta) {
+                feedbackDiv.style.backgroundColor = "#f8d7da";
+                feedbackDiv.style.color = "#842029";
+                feedbackDiv.style.border = "1px solid #f5c2c7";
+                feedbackDiv.innerHTML = `❌ El nombre es demasiado corto o ambiguo. Nombres como "${entrada}" obligan a otros programadores a adivinar qué hace el código. Intenta usar algo más explícito como <code>esContrasenaSegura</code> o <code>validarClave</code>.`;
+            } else {
+                feedbackDiv.style.backgroundColor = "#fff3cd";
+                feedbackDiv.style.color = "#664d03";
+                feedbackDiv.style.border = "1px solid #ffe69c";
+                feedbackDiv.innerHTML = `⚠️ Nombre detectado pero no sigue el patrón estándar de JavaScript. Recuerda usar la estructura: <code>verboAccionEspecifica</code> comenzando en minúscula.`;
+            }
+        }
+    </script>
+</body>
+
+</html>
